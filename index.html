@@ -15,57 +15,73 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body { background: linear-gradient(135deg, #00241f, #004d40); color: var(--text); min-height: 100vh; }
 
-        /* --- DASHBOARD UI --- */
-        #auth-container { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .login-card { background: var(--glass); backdrop-filter: blur(20px); padding: 40px; border-radius: 20px; text-align: center; border: 1px solid var(--glass); }
-        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; }
-        .btn { background: var(--accent); color: #000; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin: 10px; }
+        /* --- LOGIN PAGE --- */
+        #auth-container { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .login-card {
+            background: var(--glass); backdrop-filter: blur(25px);
+            padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1);
+            width: 100%; max-width: 420px; text-align: center;
+        }
+        input {
+            width: 100%; padding: 14px; margin: 12px 0;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass);
+            border-radius: 10px; color: white; outline: none;
+        }
+        .btn {
+            background: linear-gradient(45deg, var(--accent), #fcf6ba);
+            color: #00241f; padding: 14px; border: none; border-radius: 10px;
+            cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;
+        }
+
+        /* --- DASHBOARD --- */
         #dashboard { display: none; }
-        .container { padding: 20px 5%; max-width: 1200px; margin: auto; }
-        .glass-panel { background: var(--glass); padding: 30px; border-radius: 20px; margin-bottom: 20px; border: 1px solid var(--glass); }
+        nav {
+            background: rgba(0,0,0,0.8); padding: 15px 5%; display: flex;
+            justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass);
+        }
+        .container { padding: 30px 5%; max-width: 1200px; margin: auto; }
+        .glass-panel {
+            background: var(--glass); backdrop-filter: blur(15px);
+            padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
 
         /* --- VIDEO GRID --- */
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
-        .video-card { background: rgba(0,0,0,0.3); border-radius: 12px; overflow: hidden; }
-
-        /* --- GOLDEN ID CARD (For Screen) --- */
-        #printableID {
-            width: 380px; height: 250px; background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
-            border-radius: 15px; margin: 20px auto; color: #111; padding: 15px; text-align: center;
-            display: flex; flex-direction: column; justify-content: space-between; border: 2px solid #8a6d3b;
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .video-card { background: rgba(0,0,0,0.4); border-radius: 15px; overflow: hidden; border: 1px solid var(--glass); position: relative; }
+        .status-badge {
+            position: absolute; top: 10px; right: 10px; padding: 5px 10px;
+            font-size: 0.7rem; border-radius: 20px; font-weight: bold; z-index: 5;
         }
-        .id-content { display: flex; gap: 15px; text-align: left; align-items: center; }
-        .id-photo-frame { width: 90px; height: 110px; border-radius: 5px; border: 2px solid #fff; background: #eee; }
-        .id-details { font-size: 0.7rem; font-weight: bold; line-height: 1.4; }
+        .completed { background: #2e7d32; color: white; }
+        .watching { background: var(--accent); color: #000; }
 
-        /* --- DECORATED CERTIFICATE (For Screen) --- */
+        /* --- GOLDEN ID CARD --- */
+        .gold-id {
+            width: 380px; min-height: 280px; background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
+            border-radius: 15px; margin: 25px auto; color: #111; padding: 20px; text-align: center;
+        }
+        .id-school-title { font-weight: 900; font-size: 1.2rem; border-bottom: 1.5px solid rgba(0,0,0,0.1); padding-bottom: 5px; margin-bottom: 10px; }
+        .id-content { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 10px; }
+        .id-photo-frame { width: 100px; height: 130px; border-radius: 8px; background: #fff; object-fit: cover; border: 2px solid #fff; }
+        .id-details { text-align: left; font-size: 0.75rem; line-height: 1.5; font-weight: 700; flex: 1; }
+        .id-line-break { border-top: 2px solid rgba(0,0,0,0.2); margin: 10px 0; }
+        .id-footer-brand { font-weight: 900; font-size: 1.1rem; }
+
+        /* --- CERTIFICATE --- */
         #certificate {
-            width: 800px; height: 580px; background: white; margin: 20px auto;
-            position: relative; color: #333; padding: 40px; display: none;
-            border: 20px solid var(--primary);
-            box-shadow: inset 0 0 0 10px var(--accent);
+            width: 100%; max-width: 800px; height: 550px; background: #fff;
+            border: 15px solid var(--primary); margin: 20px auto; padding: 30px;
+            color: #333; text-align: center; display: none;
         }
-        .cert-border-inner { border: 2px solid var(--primary); height: 100%; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: space-around; }
-        .cert-school-name { font-size: 2.5rem; color: var(--primary); font-weight: 900; text-transform: uppercase; }
-        .cert-title { font-size: 3.5rem; color: var(--accent); font-family: 'Times New Roman', serif; }
-        .cert-user { font-size: 2rem; border-bottom: 2px solid #333; margin: 10px 0; min-width: 300px; }
-        .cert-info { font-size: 1rem; color: #555; }
+        .cert-locked { padding: 40px; border: 2px dashed var(--accent); color: var(--accent); border-radius: 15px; }
 
-        /* --- PRINT LOGIC (PDF Optimization) --- */
+        footer { text-align: center; padding: 40px; font-size: 0.85rem; opacity: 0.7; }
+
         @media print {
-            body { background: white !important; }
-            nav, .btn, .video-grid, h3, .glass-panel, footer, #auth-container { display: none !important; }
-            
-            /* Print only ID Card */
-            body.print-id #printableID { display: flex !important; position: absolute; top: 0; left: 0; margin: 0; }
-            body.print-id #certificate { display: none !important; }
-
-            /* Print only Certificate */
-            body.print-cert #certificate { 
-                display: block !important; position: absolute; top: 0; left: 0; 
-                width: 100%; height: 95vh; margin: 0;
-            }
-            body.print-cert #printableID { display: none !important; }
+            body * { visibility: hidden; }
+            #printableID, #printableID *, #certificate, #certificate * { visibility: visible; }
+            #certificate { position: absolute; left: 0; top: 0; width: 100%; }
         }
     </style>
     <script src="https://www.youtube.com/iframe_api"></script>
@@ -78,73 +94,84 @@
             <input type="text" id="loginID" placeholder="ID Number">
             <input type="password" id="loginPass" placeholder="Password">
             <button class="btn" onclick="processLogin()">Shiga Karatu</button>
+            <p style="margin-top:20px; font-size:0.7rem; opacity:0.5;">&copy; 2026 AMA Global Inc.</p>
         </div>
     </div>
 
     <div id="dashboard">
+        <nav>
+            <span style="font-weight: bold; color: var(--accent);">AMA CREATIVES ACADEMY</span>
+            <button onclick="location.reload()" style="background:none; border:1px solid var(--accent); color:var(--accent); padding:5px 15px; border-radius:5px; cursor:pointer;">Logout</button>
+        </nav>
+
         <div class="container">
             <section class="glass-panel">
                 <h2 id="student-name"></h2>
-                <p id="course-display"></p>
+                <p id="course-access-info"></p>
             </section>
 
-            <section class="glass-panel" id="video-section">
-                <h3>Darussan Ka</h3>
+            <section id="courses">
+                <h3 style="margin-bottom: 25px;">Darussan Ka</h3>
                 <div class="video-grid" id="videoWrapper"></div>
             </section>
 
-            <!-- ID CARD SECTION -->
             <section class="glass-panel" style="text-align: center;">
-                <div id="printableID">
-                    <div style="font-weight: 900; font-size: 1.1rem; border-bottom: 1px solid rgba(0,0,0,0.2);">AMA CREATIVES ACADEMY</div>
+                <h3>Katin Shaida (Golden ID Card)</h3>
+                <div class="gold-id" id="printableID">
+                    <div class="id-school-title">AMA Creatives Academy</div>
                     <div class="id-content">
                         <img id="id-photo" src="" class="id-photo-frame">
                         <div class="id-details">
                             <p>NAME: <span id="id-name"></span></p>
-                            <p>ID NO: <span id="id-num"></span></p>
+                            <p>ID: <span id="id-num"></span></p>
                             <p>COHORT: <span id="id-cohort"></span></p>
                             <p>LGA: <span id="id-lga"></span></p>
                             <p>STATE: <span id="id-state"></span></p>
                             <p>COUNTRY: <span id="id-country"></span></p>
                         </div>
                     </div>
-                    <div style="border-top: 2px solid #000; padding-top: 5px; font-weight: 900;">AMA GLOBAL</div>
+                    <div class="id-line-break"></div>
+                    <div class="id-footer-brand">AMA GLOBAL</div>
                 </div>
-                <button class="btn" onclick="printID()">Download ID Card (PDF)</button>
+                <button class="btn" style="width: auto; padding: 10px 40px;" onclick="window.print()">Download ID Card</button>
             </section>
 
-            <!-- CERTIFICATE SECTION -->
             <section class="glass-panel" style="text-align: center;">
-                <div id="cert-locked-msg">🔒 Kammala kallo 100% don sauke Certificate</div>
-                
-                <div id="certificate">
-                    <div class="cert-border-inner">
-                        <div class="cert-school-name">AMA Creatives Academy</div>
-                        <div class="cert-title">CERTIFICATE</div>
-                        <p>Wannan takarda tana tabbatar da cewa</p>
-                        <div class="cert-user" id="cert-name"></div>
-                        <p class="cert-info">Ya kammala dukkan kwasa-kwasan dake karkashin</p>
-                        <h4 id="cert-course" style="color: var(--primary);"></h4>
-                        <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 20px;">
-                            <div style="text-align: left; font-size: 0.8rem;">
-                                ID: <span id="cert-id-num"></span><br>
-                                COHORT: <span id="cert-cohort-num"></span>
-                            </div>
-                            <div style="text-align: right;">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=AMA-Verified" style="width: 60px;"><br>
-                                <strong>Arabo M. Auwal</strong><br><small>CEO, AMA Global</small>
-                            </div>
-                        </div>
-                    </div>
+                <h3>Certificate</h3>
+                <div id="cert-locked-msg" class="cert-locked">
+                    <p>🔒 Certificate dinka yana rufe har sai ka gama kallon dukkan bidiyon course dinka.</p>
                 </div>
-                <button id="cert-btn" class="btn" style="display:none;" onclick="printCert()">Download Certificate (PDF)</button>
+                <div id="certificate">
+                    <h1 style="color: var(--primary); font-size: 3rem;">CERTIFICATE KAMMALAWA</h1>
+                    <p>Wannan takarda tana tabbatar da cewa</p>
+                    <h2 id="cert-user-name" style="margin: 20px 0; border-bottom: 2px solid #333; display: inline-block;"></h2>
+                    <p>Ya kammala dukkan darussan a harshen Hausa</p>
+                    <h3 id="cert-course-name" style="color: var(--accent);"></h3>
+                    <p style="margin-top: 50px;">Approved By Arabo M. Auwal)</p>
+                </div>
+                <button id="cert-btn" class="btn" style="width: auto; padding: 10px 40px; display: none;" onclick="window.print()">Download Certificate</button>
             </section>
+
+            <footer>
+                <p>&copy; 2026 <strong>AMA Global Inc.</strong> All Rights Reserved.</p>
+                <p>Developed by Arabo M. Auwal</p>
+            </footer>
         </div>
     </div>
 
     <script>
+        let accessibleVideoCount = 0;
         const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vToJbckEAiG7SfEMsbXsDg7CLUPDa9U9GQA0w-y1O27YEGimD2EnHomCZ89m3pnfLhaNSnwh5Vb08s5/pub?gid=2073621666&single=true&output=csv';
-        let studentData = {};
+
+        const videoLibrary = [
+            { id: "v1", title: "Web App Ep 1", category: "web app", ytID: "7DumGWG-UFc" },
+            { id: "v2", title: "Web App Ep 2", category: "web app", ytID: "-et9KpjpVLI" },
+            { id: "v3", title: "Web App Ep 3", category: "web app", ytID: "DEjHEXKkBDs" },
+            { id: "v4", title: "Web App Ep 4", category: "web app", ytID: "jHxH0-8_ZCo" },
+            { id: "v5", title: "Web App Ep 5", category: "web app", ytID: "2xPN98_8JeQ" },
+            { id: "v6", title: "Web App Ep 6", category: "web app", ytID: "9m2yWGQPO2Q" },
+            { id: "v7", title: "Web App Ep 7", category: "web app", ytID: "hJSTGSLcSnM" }
+        ];
 
         async function processLogin() {
             const idInput = document.getElementById('loginID').value.trim();
@@ -156,77 +183,59 @@
                 for (let row of rows) {
                     const col = row.split(',').map(c => c.trim());
                     if (col[3] === idInput && col[4] === passInput) {
-                        studentData = { name: col[2], id: col[3], passport: col[1], course: col[6], cohort: col[7], lga: col[8], state: col[9], country: col[10] };
-                        showDashboard();
+                        launchDashboard({ passport: col[1], name: col[2], id: col[3], courses: col[6].toLowerCase(), cohort: col[7], country: col[8], state: col[9], lga: col[10] });
                         return;
                     }
                 }
-                alert("ID ko Password ba daidai ba!");
-            } catch (e) { alert("An samu matsala."); }
+                alert("Wrong ID Number or Password!");
+            } catch (e) { alert("Error database."); }
         }
 
-        function showDashboard() {
+        function launchDashboard(user) {
             document.getElementById('auth-container').style.display = 'none';
             document.getElementById('dashboard').style.display = 'block';
-            
-            document.getElementById('student-name').innerText = "Sannu, " + studentData.name;
-            document.getElementById('id-name').innerText = studentData.name;
-            document.getElementById('id-num').innerText = studentData.id;
-            document.getElementById('id-cohort').innerText = studentData.cohort;
-            document.getElementById('id-photo').src = studentData.passport;
-            
-            // Gyaran LGA/Country kishiyar juna
-            document.getElementById('id-lga').innerText = studentData.lga;
-            document.getElementById('id-state').innerText = studentData.state;
-            document.getElementById('id-country').innerText = studentData.country;
-
-            // Certificate Info
-            document.getElementById('cert-name').innerText = studentData.name;
-            document.getElementById('cert-course').innerText = studentData.course;
-            document.getElementById('cert-id-num').innerText = studentData.id;
-            document.getElementById('cert-cohort-num').innerText = studentData.cohort;
-
-            renderVideos();
+            document.getElementById('student-name').innerText = "Barka da Zuwa, " + user.name;
+            document.getElementById('course-access-info').innerText = "Course: " + user.courses;
+            document.getElementById('id-name').innerText = user.name;
+            document.getElementById('id-num').innerText = user.id;
+            document.getElementById('id-cohort').innerText = user.cohort;
+            document.getElementById('id-photo').src = user.passport;
+            document.getElementById('id-lga').innerText = user.lga || "N/A";
+            document.getElementById('id-state').innerText = user.state || "N/A";
+            document.getElementById('id-country').innerText = user.country || "N/A";
+            document.getElementById('cert-user-name').innerText = user.name;
+            document.getElementById('cert-course-name').innerText = user.courses;
+            renderVideos(user.courses);
         }
 
-        function renderVideos() {
-            // Misalin bidiyo 7 (Za ka iya amfani da naka jeren)
-            const vids = ["7DumGWG-UFc", "-et9KpjpVLI", "DEjHEXKkBDs", "jHxH0-8_ZCo", "2xPN98_8JeQ", "9m2yWGQPO2Q", "hJSTGSLcSnM"];
+        function renderVideos(userCourses) {
             const wrapper = document.getElementById('videoWrapper');
-            vids.forEach((id, index) => {
-                const div = document.createElement('div');
-                div.className = 'video-card';
-                div.innerHTML = `<div id="player${index}"></div>`;
-                wrapper.appendChild(div);
-                new YT.Player(`player${index}`, { height: '200', width: '100%', videoId: id, events: { 'onStateChange': (e) => { 
-                    if(e.data === YT.PlayerState.ENDED) {
-                        localStorage.setItem('v_'+index, 'done');
-                        checkCompletion(vids.length);
-                    }
-                }}});
+            wrapper.innerHTML = "";
+            const tags = userCourses.split(',').map(t => t.trim().toLowerCase());
+            let count = 0;
+            videoLibrary.forEach(video => {
+                if(tags.includes(video.category)) {
+                    count++;
+                    const done = localStorage.getItem('done_' + video.id);
+                    const card = document.createElement('div');
+                    card.className = 'video-card';
+                    card.innerHTML = `<div id="badge_${video.id}" class="status-badge ${done ? 'completed' : 'watching'}">${done ? 'DONE' : 'WATCHING'}</div><div id="player_${video.id}"></div><div style="padding:10px;"><h4>${video.title}</h4></div>`;
+                    wrapper.appendChild(card);
+                    new YT.Player(`player_${video.id}`, { height: '200', width: '100%', videoId: video.ytID, events: { 'onStateChange': (e) => { if(e.data === YT.PlayerState.ENDED) { localStorage.setItem('done_'+video.id, "true"); document.getElementById('badge_'+video.id).className="status-badge completed"; document.getElementById('badge_'+video.id).innerText="DONE"; validateCert(); } } } });
+                }
             });
+            accessibleVideoCount = count;
+            validateCert();
         }
 
-        function checkCompletion(total) {
+        function validateCert() {
             let done = 0;
-            for(let i=0; i<total; i++) { if(localStorage.getItem('v_'+i)) done++; }
-            if(done === total) {
+            videoLibrary.forEach(v => { if(localStorage.getItem('done_' + v.id)) done++; });
+            if(done >= accessibleVideoCount && accessibleVideoCount > 0) {
                 document.getElementById('cert-locked-msg').style.display = 'none';
                 document.getElementById('certificate').style.display = 'block';
                 document.getElementById('cert-btn').style.display = 'inline-block';
             }
-        }
-
-        function printID() {
-            document.body.classList.add('print-id');
-            document.body.classList.remove('print-cert');
-            window.print();
-        }
-
-        function printCert() {
-            document.body.classList.add('print-cert');
-            document.body.classList.remove('print-id');
-            window.print();
         }
     </script>
 </body>
