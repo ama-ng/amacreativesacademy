@@ -183,7 +183,7 @@
                 for (let row of rows) {
                     const col = row.split(',').map(c => c.trim());
                     if (col[3] === idInput && col[4] === passInput) {
-                        launchDashboard({ passport: col[1], name: col[2], id: col[3], courses: col[6].toLowerCase(), cohort: col[7], lga: col[8], state: col[9], country: col[10] });
+                        launchDashboard({ passport: col[1], name: col[2], id: col[3], courses: col[6].toLowerCase(), cohort: col[7], country: col[8], state: col[9], lga: col[10] });
                         return;
                     }
                 }
