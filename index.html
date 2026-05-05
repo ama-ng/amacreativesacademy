@@ -88,12 +88,28 @@
 </head>
 <body>
 
+    <!-- LOGIN PAGE -->
     <div id="auth-container">
         <div class="login-card">
             <h1 style="color: var(--accent);">AMA CREATIVES</h1>
+            <p style="font-size: 0.8rem; margin-bottom: 20px; opacity: 0.8;">Hausa Academy Portal</p>
+            
             <input type="text" id="loginID" placeholder="ID Number">
             <input type="password" id="loginPass" placeholder="Password">
-            <button class="btn" onclick="processLogin()">Shiga Karatu</button>
+
+            <!-- Wannan shine bangaren da ka bayar -->
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin: 10px 0; color: white;">
+                <label style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" style="width: auto; margin: 0;"> Remember Me
+                </label>
+                <a href="https://wa.me/2347037337528?text=Assalamu%20Alaikum,%20na%20manta%20password%20ta" 
+                   style="color: var(--accent); text-decoration: none; font-weight: bold;">
+                   Forgot Password?
+                </a>
+            </div>
+
+            <button class="btn" onclick="processLogin()">Log In</button>
+            
             <p style="margin-top:20px; font-size:0.7rem; opacity:0.5;">&copy; 2026 AMA Global Inc.</p>
         </div>
     </div>
@@ -125,9 +141,9 @@
                             <p>NAME: <span id="id-name"></span></p>
                             <p>ID: <span id="id-num"></span></p>
                             <p>COHORT: <span id="id-cohort"></span></p>
-                            <p>LGA: <span id="id-lga"></span></p>
-                            <p>STATE: <span id="id-state"></span></p>
                             <p>COUNTRY: <span id="id-country"></span></p>
+                            <p>STATE: <span id="id-state"></span></p>
+                            <p>LGA: <span id="id-lga"></span></p>
                         </div>
                     </div>
                     <div class="id-line-break"></div>
@@ -145,8 +161,9 @@
                     <h1 style="color: var(--primary); font-size: 3rem;">CERTIFICATE KAMMALAWA</h1>
                     <p>Wannan takarda tana tabbatar da cewa</p>
                     <h2 id="cert-user-name" style="margin: 20px 0; border-bottom: 2px solid #333; display: inline-block;"></h2>
-                    <p>Ya kammala dukkan darussan a harshen Hausa</p>
+                    <p>Ya kammala dukkan darussansa a makarantar AMA CREATIVES ACADEMY a harshen Hausa</p>
                     <h3 id="cert-course-name" style="color: var(--accent);"></h3>
+                    <br>
                     <p style="margin-top: 50px;">Approved By Arabo M. Auwal)</p>
                 </div>
                 <button id="cert-btn" class="btn" style="width: auto; padding: 10px 40px; display: none;" onclick="window.print()">Download Certificate</button>
